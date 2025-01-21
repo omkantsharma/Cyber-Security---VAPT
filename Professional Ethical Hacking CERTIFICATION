@@ -1,1 +1,122 @@
+Professional Ethical Hacking Certification
 
+Key points ---
+
+
+https://distrowatch.com/
+
+
+in Linux shell--
+/etc  /  ls
+
+
+iptables -L
+
+
+chain = input-forward-output
+Connection specific responses = accept-drop-reject
+
+----
+
+ip forwarding 
+
+
+to view password file in kali --
+nano/etc/passwd
+
+to view your shadow file in kali --
+nano /etc/ shadow
+
+----
+Manage Dir & files
+
+mkdir -m 777 dirname
+mkdir -p/Desktop
+
+rm -rf /dir or file
+
+-------
+
+DNS Insecurities
+Public DNS- Nslookup, Dig, DNS Stuff (Web)
+
+if misconfigured - 
+-zone transfer can be attempted.
+-DNS cache poisoning
+
+-------
+SNMP
+simple network management protocol
+
+SMTP
+simple mail transfer protocol
+
+------
+LDAP
+light weight directory access protocol
+
+LDAP Insecurities
+basic authentication 
+any user domain
+domain schema configuration
+reveals all users, groups, computers in the domain
+
+------
+
+During penetration  
+Service to Consider---
+-TCP 53 DNS
+-TPC 135 RPC
+-TPC 137 NetBIOS
+-TCP 139 NetBIOS
+-TCP 445 - SMB
+-UDP 161 -aSNMP
+-TCP/UDP 389 - LDAP
+-TCP 25 -SMTP
+-UDP 123 - NTP
+
+----------------------------------------------------
+Cryptography
+
+Symmetric Encryption - (cryptography secret key)
+Asymmetric Encryption - (cryptography Public key)
+
+Hashing
+PKI
+--
+Cryptography 
+science of hiding the meaning of communication
+Cipher 
+something that transforms character or bits into an unreadable format
+cryptographical algorithm
+procedure that turn readable data into an unreadable format 
+-- today this take place through complex mathematical formulas
+
+Cryptanalysis - Science of study and breaking encryption mechanisms
+
+- Cryptology 
+study of cryptography & cryptanalysis
+-----------------
+Key Clustering
+When two key generate the two cypher text from the plain same text
+---------
+cryptography use- 
+process to hide data 
+reversible function
+Provide -
+authentication
+privacy
+integrity
+non repudiation
+-----------
+substitution
+transposition  - Caesar cipher
+-------------------
+
+
+
+-------------------
+-------------------
+
+---------------------------------------------------------
+---------------------------------------------------------
