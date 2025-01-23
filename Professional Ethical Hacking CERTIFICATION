@@ -2,7 +2,9 @@ Professional Ethical Hacking Certification
 
 Key points ---
 
-
+Module 1
+Ethical Hacking Fundamental
+----                                           -------
 https://distrowatch.com/
 
 
@@ -112,11 +114,97 @@ non repudiation
 substitution
 transposition  - Caesar cipher
 -------------------
+hash like fingerprint of message
 
+Resistant to birthday attacks
+two different message can generate the same hash value
 
+only payload of a frame is encrypted
+Usually take place through email clients
+Header and trailers are not encrypted
+- Hops do not need to decrypt and re- encrypt headers
+ -----------------
+IP Sec 
+Network Layer Protection
+-developed because ipv4 has no security mechanisms
+-integrated in IPv6
+- set up secure channel between computer instead of applications
+-Application secure channels are usually provided with SSL.
+- Network Layer Security
+-can provide host to host , host to subnet, subnet to subnet connections.
+
+Manual 
+each device is configured with symmetric key and security association information.
+
+internet Key Exchange (IKE)
+- is the fecto standrd
+-----------------------
+applied cryptanalysis
+brute-force attack
+dictionary attack-
+Reverse brute force attack 
+frequency analysis
+man in the middle attack
+-------------------
+Password cracking 
+remember, the password is normally stored the hash, one way encryption
+------------
+tsgrinder.exe
+LM/NTLM Hashes
+Syskey encryption
+--
+cracking Rainbow Tables
+cain & abel  https://www.oxid.it/cain.html
+John the Ripper   https://www.openwall.com/john
+hashcat https://hashcat.net/hashcat
 
 -------------------
+GPU AND CPU for password cracking
+a cpu core can execute 4 32 - bit instructions per clock
+where as the gpu can do 3200 32 bit instructions pr clock
+coin mining 
+kali gpu instance in AWS
+--------------------
+NTPASSWD- hash insertion attack 
+PASSWORD SNIFFING
+Employ technical, physical, social engineering attacks
+sniffer & log to file
+retrieve capture file read user , pass 
 -------------------
+Malware & attack 
+DDOS - TOOL like - HOIC
+DDOC - Detections should be- 
+- detect the dos attack before service start degrade
+- React quickly and have low false positive rate
+-------------------------------
+detection techniques ----
+- activity profiling
+- Sequential change point detection
+- Wavelet analysis
+------------
 
+
+
+
+
+
+--------------------
 ---------------------------------------------------------
 ---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
