@@ -1,0 +1,536 @@
+Professional Ethical Hacking Certification
+
+Key points ---
+
+Module 1
+Ethical Hacking Fundamental
+----                                           -------
+https://distrowatch.com/
+
+
+in Linux shell--
+/etc  /  ls
+
+
+iptables -L
+
+
+chain = input-forward-output
+Connection specific responses = accept-drop-reject
+
+----
+
+ip forwarding 
+
+
+to view password file in kali --
+nano/etc/passwd
+
+to view your shadow file in kali --
+nano /etc/ shadow
+
+----
+Manage Dir & files
+
+mkdir -m 777 dirname
+mkdir -p/Desktop
+
+rm -rf /dir or file
+
+-------
+
+DNS Insecurities
+Public DNS- Nslookup, Dig, DNS Stuff (Web)
+
+if misconfigured - 
+-zone transfer can be attempted.
+-DNS cache poisoning
+
+-------
+SNMP
+simple network management protocol
+
+SMTP
+simple mail transfer protocol
+
+------
+LDAP
+light weight directory access protocol
+
+LDAP Insecurities
+basic authentication 
+any user domain
+domain schema configuration
+reveals all users, groups, computers in the domain
+
+------
+
+During penetration  
+Service to Consider---
+-TCP 53 DNS
+-TPC 135 RPC
+-TPC 137 NetBIOS
+-TCP 139 NetBIOS
+-TCP 445 - SMB
+-UDP 161 -aSNMP
+-TCP/UDP 389 - LDAP
+-TCP 25 -SMTP
+-UDP 123 - NTP
+
+----------------------------------------------------
+Cryptography
+
+Symmetric Encryption - (cryptography secret key)
+Asymmetric Encryption - (cryptography Public key)
+
+Hashing
+PKI
+--
+Cryptography 
+science of hiding the meaning of communication
+Cipher 
+something that transforms character or bits into an unreadable format
+cryptographical algorithm
+procedure that turn readable data into an unreadable format 
+-- today this take place through complex mathematical formulas
+
+Cryptanalysis - Science of study and breaking encryption mechanisms
+
+- Cryptology 
+study of cryptography & cryptanalysis
+-----------------
+Key Clustering
+When two key generate the two cypher text from the plain same text
+---------
+cryptography use- 
+process to hide data 
+reversible function
+Provide -
+authentication
+privacy
+integrity
+non repudiation
+-----------
+substitution
+transposition  - Caesar cipher
+-------------------
+hash like fingerprint of message
+
+Resistant to birthday attacks
+two different message can generate the same hash value
+
+only payload of a frame is encrypted
+Usually take place through email clients
+Header and trailers are not encrypted
+- Hops do not need to decrypt and re- encrypt headers
+ -----------------
+IP Sec 
+Network Layer Protection
+-developed because ipv4 has no security mechanisms
+-integrated in IPv6
+- set up secure channel between computer instead of applications
+-Application secure channels are usually provided with SSL.
+- Network Layer Security
+-can provide host to host , host to subnet, subnet to subnet connections.
+
+Manual 
+each device is configured with symmetric key and security association information.
+
+internet Key Exchange (IKE)
+- is the fecto standrd
+-----------------------
+applied cryptanalysis
+brute-force attack
+dictionary attack-
+Reverse brute force attack 
+frequency analysis
+man in the middle attack
+-------------------
+Password cracking 
+remember, the password is normally stored the hash, one way encryption
+------------
+tsgrinder.exe
+LM/NTLM Hashes
+Syskey encryption
+--
+cracking Rainbow Tables
+cain & abel  https://www.oxid.it/cain.html
+John the Ripper   https://www.openwall.com/john
+hashcat https://hashcat.net/hashcat
+
+-------------------
+GPU AND CPU for password cracking
+a cpu core can execute 4 32 - bit instructions per clock
+where as the gpu can do 3200 32 bit instructions pr clock
+coin mining 
+kali gpu instance in AWS
+--------------------
+NTPASSWD- hash insertion attack 
+PASSWORD SNIFFING
+Employ technical, physical, social engineering attacks
+sniffer & log to file
+retrieve capture file read user , pass 
+-------------------
+Malware & attack 
+DDOS - TOOL like - HOIC
+DDOC - Detections should be- 
+- detect the dos attack before service start degrade
+- React quickly and have low false positive rate
+-------------------------------
+detection techniques ----
+- activity profiling
+- Sequential change point detection
+- Wavelet analysis
+------------
+Dos detection Sequential Change Point Detection
+- Traffic is filtered at the victim's system and treated as tie series
+- CUSUM/Cumulative sum algorithm used to compare traffic with average traffic. 
+- CUSUM threshold could be recursively adjusted upward / downward
+
+- Dos attack could be identified based on the difference in the upbound
+threshold in a time series.
+-------------------
+ Dos detection - wavelet Analysis
+ -input signal is described as spectral component in wavelets
+- -----------------------
+dos / ddos countermeasures
+Strategies to counter Dos/ DDos Attack
+- Absorb the attack
+-Degrade Service
+-Shut down service
+----------------
+Key Countermeasure --
+- protect - secondary victims
+-detect & neutralize - use ingress / egress filtering, tcp intercept
+- Deflect - Use Honeypots, Defence in Depth
+-Mitigate - Load balance, Bandwidth throttling, Protection ISP
+- Post Attack Forensic
+-----------------
+Botnet Countermeasure
+Apply 
+- RFC 3794 Filtering
+-Black Hole Filtering
+-Cisco IPS Source IP Reputation Filtering
+-------------------
+Use DDos Prevention Offering from your IPS or cloud DDOS service
+--------------------
+Advanced Dos / DDos Protection Tools 
+Dedicated hardware
+- DDos Protector
+- FortiDDos appliance 
+- The Cisco Guard XT 
+
+Software tools
+- Wanguard
+-SDL Regex Fuzezr
+- NetScaler 
+-Anti DDos Guardian
+----------------------
+Malware - Virus -
+- it may damage data files
+- infect boot records
+- lock your data with encryption
+---------------------
+File Infector virus 
+- infect program file
+- executable file
+----------------------
+Type of Virus 
+Boot sector virus
+- Master boot record virus
+image: findgk.com
+1 bios
+2 master boot record
+3 partition boot sector 
+4 Operating System
+
+------------
+Multi-partite virus
+- Infect program files and then the infected files can infect boot sectors.
+Micro virus 
+- infected data files that have micro features, like - Microsoft office and access files. 
+Resident and non resident memory virus
+DNS charger virus
+Melissa - micro virus 26 march 99
+-------------------------------------------------------------------------------------------------
+Worms 
+do not intend to infect a file, but rather infect a network.
+a worm can replicate itself without any user intervention or 
+execution of a program.
+worm can use vulnerability found on a network to infect computer.
+they revive again & again..
+worm name - Stuxnet / win 32
+(June 2010)
+attack SCADA System
+-----------------------------------------------------------------------------------
+Trojans and Backdoor
+backdoor is the process to bypass the normal authentication process...
+
+-----------------
+Distributing malware
+= viral distribution method
+- E - Mail  Attachments, MI, IRC
+- Physical Access / Storage Media (DVD/ CDs USB drives)
+- browse and email software bugs
+- File Sharing
+----NetBIOS
+----Peer to Peer
+----Usenet News groups
+- Un-trusted Sites and freeware Software
+-Wrapped or Repackaged Programs
+
+--------------------------
+Malware Capabilities
+Remote Access 
+Password Sending 
+Keyloggers
+Surveillance (spyware)
+Dos 
+FTP Trojans
+Software Detection Killers
+----------------------------
+Netcat 
+create outbound and inbound connections, TCP or UDP, to or from any ports
+- Ability to use any local source port
+- Ability to use any locally configured network source address
+- Build-in port scanning capabilities with randomizer 
+- build in loose source routing capabilities.
+-v         verbose
+-vv       very verbose
+-e         execute the program (-e cmd.exe or -e /bin/sh)
+-d        stealth mode
+-n           ip not DNS
+-l          listen
+-L        user to reconnect even if connection droped
+-u        UDP
+-o        logfile
+---------------------------------
+Ransomware
+-- used public-key encryption
+- September 13 - May 14
+- used RSA encryption
+------
+wannaCry
+may 2017 appeard 
+----- developed by nsa stolen by Hckers
+---- infected 250000
+- --- used asymmetric encryption
+---- spread autonomously using eternalBlue
+---- hacker did not decrypt any data , even after payment.
+------------------------
+Security Devices
+-security Appliances
+--Switching and Routing
+----- switch Security
+---------
+DHCP SNOOPING
+dynamic ARP inspection - detect spoof mac addr & ARP Flood (poison)
+IP Gurd - mapping IP to MAC , Port & VLan 
+Port Security - mac allow on particular port, all other denied access
+Protected Port - eliminate direct communication between computer on the same switch and same VLAN.
+
+--------------------------------
+------- Router Security 
+essential security provided
+like firewall, IDS, Malware scanners
+ essential setting provided ---
+AAA
+ACL : ACCESS CONTROL LIST
+802.1X
+IPsec: IP network encryption
+VPN: variety OF types
+Transparent firewall
+CA Provisioning
+content filtering
+https://www.cisco.com/site/us/en/products/networking/sdwan-routers/4000-series-integrated-services-routers/index.html
+---------------------------------
+VLANs provide enhanced performance on the network and an
+additional security layer
+Segmentation of Networks can prevent several attacks form infecting 
+the whole network
+- worms can not jump from one VLAN to another 
+- Sensitive network areas can be isolated using a vlan to protect against 
+sniffing (storage, Volp..)
+VLAN have their own share of attacks as well..
+-VLAN hopping
+-VLAN double tagging 
+--------
+Proxy, NAT, PAT
+Static NAT         Static PAT
+-----
+Firewall
+-- unauthorized traffic is rejected
+-- inbound traffic
+NGFWs
+--packet filtering, NAT, PAT URL Blocking, VPN, Qos.....
+ew capabilities such as----
+IDS, IPS, SSL and SSH Inspection, reputation Based Malware detection,
+application awareness......
+NGFW can:
+- block malware before enter the network
+- Prevent attack initiated through web sessions (SQL Injection...)
+-  can defend again APT..
+- Deep packet inspection analyzes
+- work in transparent mode..
+------------
+DMZ 
+Public Network  ----> External Firewall ---> DMZ ----> Internal Firewall
+----> LAN ......
+------------
+IDS 
+PUBLIC NETWORK ---> Router ----> Firewall --- > Switch ---> 1. LAN Hub 
+& 2. IDS/IPS Device & Servers
+-------------
+IPS -
+IPS usually sits behind the firewall to provide an additional layer of 
+inspection
+IPS actively analyzes traffic and takes automated action on all traffic.
+- send alarms to system administrator
+- Drops malicious packets
+- Block source address of malicious traffic
+- Resets connections
+- An IPS uses two main modes of detection
+- signature based - DB signature (patterns)
+- Anomaly statistic - create baseline for network performance 
+and takes random sample to compare. 
+--------------------------------------------------
+Modes of detection an Intrusion Prevention System (IPS) ----
+-Signature-based detection
+-Anomaly-based detection
+----------------------------------------------------
+SIEM -combines security information and security event management
+(SIM, SEM)
+- Provide real time monitoring and analysis of alerts generated from network devices and applications. 
+SIEM Capabilities --
+- aggregate data from various devices
+Network devices, security appliance, servers, databases, applications
+Correlation - links event together into meaning ful threads
+Alerts: automatic analysis of correlated events
+Compliance: gather compliance data and produce reports
+Retention: ensure long-term storage of historical data necessary for compliance, audit or other reasons.
+Forensic : facilitates log and events search when investigating an incident.
+----------
+Basic Security Elements
+Security Appliances
+-----------
+-----------------------------------------------------------------------------------------------
+Salting is the process of securing hashes from a rainbow table attack. 
+Password salt makes each hashed password in a database unique.
+-----------------------------------------------------------------------------------------------
+Lesson Summary ----
+---------------------------------------------------------
+The key points from this module are:
+An ethical hacker is a person who hacks into a computer network to test or evaluate its security rather than with malicious or criminal intent.
+Ethical hacking refers to the act of locating weaknesses and vulnerabilities of computer and information systems by duplicating the intent and actions of malicious hackers.
+A penetration test intends to validate or test the security of any IT system, and the owner of the system must authorise this.
+A white-hat hacker is an ethical computer hacker or security expert who specialises in penetration testing and in other testing methodologies that ensures the security of an organisation's information system.
+Bash is a UNIX command shell written for the GNU project. Its name is an acronym for Bourne and shell.
+Open System Interconnection (OSI) model is the first standard created to rule network communication. It has seven layers.
+TCP/IP model, also known as DARPA layers, is the successor of the OSI model, and it is implemented in nearly every communication system. It consists of four layers.
+--------------------------------------------------------------------------------------
+Address Resolution Protocol (ARP) is a way to map IP addresses to the media access control (MAC) address.
+Domain Name Service (DNS) works within a hierarchical naming structure. A DNS server that holds resource records for a zone is the authoritative DNS server.
+Simple Network Management Protocol (SNMP) is a way to perform real-time health checking of all your communication systems.
+Cryptography is a way of hiding the meaning of communication.
+A cipher is a set of rules or algorithms that defines how to take a plain text and turn it into an unreadable format.
+Below are some types of cryptographic algorithms:
+Symmetric cryptography: This involves using one key for both encryption and decryption processes. The sender and receiver use the same key.
+Asymmetric cryptography: This uses public and private keys that are mathematically related but should not be able to be derived from each other.
+Hashing functions: This accepts a variable-length string (message) and generates a fixed-length value (hash value).
+---------------------------------------------------------------------------------------
+Salting is the process of securing hashes from a rainbow table attack. Password salt makes each hashed password in a database unique.
+Denial of service (DoS) is an attack on the availability of IT resources such as a server, network device, website, etc.
+In a botnet attack, attackers distribute malware to turn computers into a bot or zombies. These allow intruders to operate remotely.
+A computer virus is a program that can copy itself and infect a computer without the permission or knowledge of the user.
+A trojan horse is a destructive program that masquerades as a benign application.
+A backdoor is a method of bypassing the normal authentication process.
+VLANs provide enhanced performance on the network and an additional security layer that can prevent several attacks from infecting the whole network.
+Security information and event management(SIEM) combine security information and security event management to provide real-time monitoring and analysis of alerts generated by network devices and applications.
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+Information gathering ----
+-Reconnaissance - 
+---Passive (External Only) -- gather information as possible without connecting the target.
+---Active -- reach out the target -- Physical security -- social engineering
+----------------
+Open Source Intelligence (OSINT)
+- Data that is collected from publicly available sources
+-  OSINT source can be divided up into six different categories of information flow.
+--- Media - print newspaper, Magazines, radio and television from across and between countries. 
+--- internet online publication, blogs, call, phone , videos and user created content, you tube and other social media websites ( i.e. - Facebook, twitter, Instagram etc. )
+This source also outpaces a variety of other sources due to its timeliness and ease of access. 
+- Public Government Data, Public government report, budgets, hearings, telephone directories, press conferences, websites and speeches..
+- Professional and academic  Publications, information acquired from journals, conferences, symposia, academic paper, dissertations and theses. 
+- Commercial Data, Commercial imagery, financial and industrial assessments, and databases.
+- Grey Literature, technical reports, preprints, working paper, business documents, unpublished works, and newsletters. 
+OSINT FRAMEWORK 
+https://osintframework.com/
+-----------------------------------------------------------------------------------------
+
+-
+
+-----------------------------------------------------------------------------------------
+------------
+
+-------------------------------
+
+
+----------------------------------
+
+-----------------------
+
+
+
+---------------------------------------
+
+-------
+
+
+
+
+----------------------
+
+
+
+
+
+----------------------
+----------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------
+---------------------------------------------------------
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
