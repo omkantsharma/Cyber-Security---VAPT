@@ -1,0 +1,10 @@
+Nmap Wireshark summery 
+Network Mapper (Nmap) is an open-source tool for vulnerability scanning and network discovery. It was developed by Gordon Lyon in 1997.
+The main features of Nmap include host discovery, port scanning, service, version and OS detection.
+Host discovery can be done using ICMP Sweep, Broadcast ICMP, Non-Echo ICMP, TCP Sweep, and UDP Sweep.
+The major port scanning techniques in Nmap are TCP Connect scan, TCNP SYN scan, TCP Stealth scan and FTP Bounce scan
+TCP Connect scan uses basic TCP connection establishment mechanism.
+There are thousands of scripts available with Nmap to perform various operations.
+Network analysis is a process of analysing network activity by capturing network traffic.
+Some features of network analysers include graphical user interface and statistical report generation.
+Wireshark is an open-source tool for profiling network traffic and analysing packets.
