@@ -1,0 +1,29 @@
+Identify DNS attack and mitigate 
+           ---------------------------------
+in cmd--------
+ipconfig /displaydns
+C:\Windows\System32\drivers\etc
+ipconfig /flushdns
+--
+notepad C:\Windows\System32\drivers\etc\hosts> ipconfig /displaydns (if not working use next)
+--
+PS C:\Windows\System32\drivers\etc> notepad hosts
+--
+ipconfig /flushdns
+--
+Resolve-DnsName www.google.com
+
+==============
+PS C:\Windows\System32\drivers\etc> notepad hosts
+PS C:\Windows\System32\drivers\etc> Resolve-DnsName www.google.com
+
+Name                                           Type   TTL   Section    IPAddress
+----                                           ----   ---   -------    ---------
+www.google.com                                 AAAA   235   Answer     2404:6800:4002:82f::2004
+www.google.com                                 A      236   Answer     142.250.192.164
+==============
+------------------------------------------------------------------------------------------
+or 
+in power shell
+Get-DnsClientCache
+Clear-DnsClientCache
