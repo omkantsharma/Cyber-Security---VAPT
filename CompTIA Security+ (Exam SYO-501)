@@ -1,0 +1,161 @@
+CompTIA Security+ (Exam SYO-501)
+
+
+1 
+
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss identifying security fundamentals.
+List the goals of information security.
+Define risk and recognise vulnerabilities in information security.
+Explain how the concept of information security works together to provide computer security.
+Underline the three principles of security control and management.
+Compare passwords, tokens, biometrics, geolocation and other forms of authentication.
+Identify basic cryptography concepts.
+
+
+Lesson Summary
+Identifying security fundamentals includes information security concepts, basic security controls, basic authentication and authorization concepts, and cryptography concepts.
+Vulnerabilities in information refer to improperly configured or installed hardware and software, delays in applying and testing software and firmware patches, unlisted software and firmware patches, bugs in software or OS, poor physical security, insecure passwords, among others.
+Three principles of security control and management are confidentiality, integrity and availability.
+User name and password combination is a widely used authentication scheme. Other methods of authentication are tokens, biometrics, geolocation, as well as a keystroke, multi-factor and mutual authentications.
+Cryptography is the science of hiding information, most commonly by encoding and decoding a secret code used to sent messages.
+
+
+===================================================================
+
+2
+
+
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss analyzing organizational risk and the business impact of risk.
+List the phases of risk management.
+Define BIA (Business Impact Analysis).
+Describe the impact scenarios.
+Explain the meaning of the term Maximum Tolerable Downtime (MTD).
+Underline the guidelines used when performing business impact analysis.
+
+Lesson Summary
+Analyzing risk plays a big role in making sure you have a secure environment in your organization.
+By assessing and identifying particular risk and damage it can cause, you can mitigate these threats and establish the right corrective measurements to avoid possible damage to people and systems.
+Business Impact Analysis (BIA) is a systematic activity that identifies organizational risks and determines their impact on ongoing business-critical operations and processes.
+Impact scenarios describe how life, property, safety, finances and reputation can be affected.
+Maximum Tolerable Downtime (MTD) is the longest time period that a business outage can occur without causing irrecoverable business failure.
+Privacy assessments consist of Privacy impact assessment (PIA), Privacy threshold assessment (PTA) and Personally identifiable information (PII).
+When performing business impact analysis one should identify mission-essential functions and critical system, as well as identify impact scenarios and calculate MTD, RTO, MTTF, MTTR and MTBF.
+
+======================================================================
+3
+Learning Outcomes
+Having completed this module you will be able to:
+List the types of security threats that can be identified.
+Define the terms "hacker" and "cracker".
+Explain who threat actors are.
+Discuss the types of threat actors and their attributes.
+Describe the act of social engineering.
+Distinguish the types of password attacks.
+Underline the benefits of TCP/P Basic protocol.
+
+=================================================
+=================================================
+=================================================
+-----------------------------------------------------
+Identify DNS attack and mitigate 
+           ---------------------------------
+in cmd--------
+ipconfig /displaydns
+C:\Windows\System32\drivers\etc
+ipconfig /flushdns
+--
+notepad C:\Windows\System32\drivers\etc\hosts> ipconfig /displaydns (if not working use next)
+--
+PS C:\Windows\System32\drivers\etc> notepad hosts
+--
+ipconfig /flushdns
+--
+Resolve-DnsName www.google.com
+
+==============
+PS C:\Windows\System32\drivers\etc> notepad hosts
+PS C:\Windows\System32\drivers\etc> Resolve-DnsName www.google.com
+
+Name                                           Type   TTL   Section    IPAddress
+----                                           ----   ---   -------    ---------
+www.google.com                                 AAAA   235   Answer     2404:6800:4002:82f::2004
+www.google.com                                 A      236   Answer     142.250.192.164
+==============
+------------------------------------------------------------------------------------------
+or 
+in power shell
+Get-DnsClientCache
+Clear-DnsClientCache
+---------------
+===============================================
+===============================================
+===============================================
+Identifying Port Scanning Threats
+nmap -T4 --script vuln 192.168.176.1 192.168.176.2 192.168.176.181
+nmap -T4 -F secplusvm-2 
+or 
+nmap -T4 -F <own ip>
+
+-----------
+open power shell in win
+Win + S
+search
+PowerShell
+-----
+setup domain envirnment------------
+---
+PS C:\Users\omkan> get-service *dns*
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  Dnscache           DNS Client
+
+
+PS C:\Users\omkan> get-service *dhcp*
+
+Status   Name               DisplayName
+------   ----               -----------
+Running  Dhcp               DHCP Client
+Running  VMnetDHCP          VMware DHCP Service
+----------------------------
+
+
+Lesson Summary
+Identifying security threats includes identifying types of attackers, social engineering attacks, malware, as well as software-based, network-based, wireless and physical threats.
+A hacker/attacker is an individual who has the skills to gain access to computer systems through unauthorized or unapproved means.
+A cracker is an individual who breaks encryption codes, defeats software copy protections, or specializes in breaking into systems.
+A threat actor is an entity that is partially or wholly responsible for an accident that affects or potentially affects an organization's security. Types of threat actors are "script kiddie", "hacktivist", "organized crime", "nation states", "insiders" and "competitors".
+Social engineering refers to attacking people, targeting individuals.
+A virus is a piece of malicious code that spreads from one computer to another by attaching itself to other files through a process of self-replication.
+Some of the types of password attacks are guessing, stealing, dictionary attack, brute force attack, and rainbow table attack.
+TCP/IP Basics is an open protocol that is supported by every major network operating system.
+Physical threats and vulnerabilities refer to unauthorised access to facilities and hardware, environmental issues that cause damage, as well as equipment theft.
+
+
+======================================================================
+
+4
+
+Learning Outcomes
+List different software vulnerabilities.
+Explain how poor implementation can reveal weaknesses.
+Define the process called "security assessment".
+Compare different security assessment techniques.
+Discuss different vulnerability tools.
+Outline the benefits of penetration testing and list the techniques and tools.
+
+------
+Wireshark 
+stop - filter -- in search 
+tcp.port == 443
+tcp.port == 80 || udp.port == 80
+
+------
+
+
+
+
