@@ -1,8 +1,8 @@
 CompTIA Security+ (Exam SYO-501)
 
 
-1 
-
+1  Identifying Security Fundamentals
+---------------------------------------------------
 Learning Outcomes
 Having completed this module you will be able to:
 Discuss identifying security fundamentals.
@@ -24,7 +24,8 @@ Cryptography is the science of hiding information, most commonly by encoding and
 
 ===================================================================
 
-2
+2 Analyzing Risk
+-------------------------
 
 
 Learning Outcomes
@@ -46,7 +47,9 @@ Privacy assessments consist of Privacy impact assessment (PIA), Privacy threshol
 When performing business impact analysis one should identify mission-essential functions and critical system, as well as identify impact scenarios and calculate MTD, RTO, MTTF, MTTR and MTBF.
 
 ======================================================================
-3
+3 Identifying Security Threats
+--------------------------------------------
+
 Learning Outcomes
 Having completed this module you will be able to:
 List the types of security threats that can be identified.
@@ -138,7 +141,8 @@ Physical threats and vulnerabilities refer to unauthorised access to facilities 
 
 ======================================================================
 
-4
+4 Conducting Security Assessments
+---------------------------------------------------
 
 Learning Outcomes
 List different software vulnerabilities.
@@ -148,14 +152,292 @@ Compare different security assessment techniques.
 Discuss different vulnerability tools.
 Outline the benefits of penetration testing and list the techniques and tools.
 
-------
+----------------------------------------------
+Capturing network Data with Wireshark 
 Wireshark 
+
 stop - filter -- in search 
 tcp.port == 443
 tcp.port == 80 || udp.port == 80
 
+------------------------------------------------
+Scanning for general vulnerability 
+
+Microsoft Baseline Security Analyzer 
+
+search on google -  --
+Utility page---
+https://microsoft-baseline-security-analyzer.en.lo4d.com/windows
+Download link page- 
+https://en.lo4d.com/s/microsoft-baseline-security-analyzer-download
+Direct Download link ---
+https://microsoft-baseline-security-analyzer.en.lo4d.com/download
+----  install setup -- run --- scan computer --- own computer or remote by IP
+(vulnerability identify tool)
+
+------------------------------------------------------
+Implement penetration testing 
+using active tools and technique to evaluate security by stimulating attack on systems.
+
+technique -
+reconnaissance 
+initial exploitation
+Escalation of privilege
+Pivoting
+Persistence
+-----
+Black Box Test (external threats)
+Full Reconnaissance 
+Grey Box Test  (Internal threats)
+Some Reconnaissance
+White Box Test  (Internal threats)
+No Reconnaissance
+----
+identify vulnerability
+Assess vulnerability
+Implement PT
+
+------------------------------
+4.7
+Implement Penetration testing
+
+-------------------------------
+
+Lesson Summary
+The underlying OS/platform directly affects host vulnerabilities. How the OS is configured is crucial.
+Software vulnerability known as "zero-day" has an effect that is long-lasting. This happens before the vulnerability is publicly known. Other vulnerabilities are "improper input handling", "improper error handling", "resource exhaustion", "race condition", and "memory vulnerabilities''.
+Some encryption solutions are insecure or become insecure over time. The poor implementation also reveals weaknesses.
+A security assessment is a process of testing security controls to expose any weaknesses or gaps in your tools, technologies, services, and operations.
+Vulnerability assessment tools are vulnerability scanner, port scanner, protocol/packet analyzer, fingerprinting tools, network enumerator, password cracker, backup utilities and honeypot.
+Penetration testing verifies that a threat exists, and exploits any vulnerabilities. One of the tools are stress testers, and with this, you test your systems' ability to respond to increased computing overhead and network bandwidth.
+
+===========================================================
+
+5 Implementing Host and Software Security 
+---------------------------------------------------------------
+
+Learning Outcomes
+Having completed this module you will be able to:
+Explain the security technique caller "hardening".
+List the operating system hardening techniques.
+Discuss different components in hardware and firmware security.
+Define security baselines.
+Outline the advantages of a virtual machine.
+Compare various security concerns.
+List the attributes of deployment models.
+Distinguish different types of mobile device connection methods.
+
+----
+5.2
+implement Auditing---
+------------
+open 
+local group policy editor
+press win +r
+in Run type
+gpedit.msc
+------------------------------------------------------------------------
+gpedit.msc is not available in Windows Home editions by default, you
+ can enable it manually using the following methods:
+
+Method 1: Using a Batch Script (Recommended)
+
+1. Open Notepad and copy the following code:
+
+
+@echo off
+pushd "%~dp0"
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~*.mum >List.txt
+dir /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~*.mum >>List.txt
+for /f %%i in ('findstr /i . List.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+pause
+
+
+Save the file as gpedit_enabler.bat (Choose "All Files" as file type).
+Right-click on the file and select Run as Administrator.
+Wait for the installation to complete, then restart your computer.
+Try opening gpedit.msc again using Win + R → Type gpedit.msc → Press Enter.
+computer configuration
+windows setting
+security settings
+local policies
+audit policy
+audit account logon events
+-
+(note - don't do it on local machine  )
+local security setting 
+-
+audit account logon events
+audit these attempts:
+
+select check box - success
+select check box - failure
+
+-----
+PowerShell
+gpupdate / force
+
+eventvwr.msc
+event viewer
+window logs
+security 
+(notes - security logs are different then system & application logs 
+contain warnings, information and error but security logs are just 
+failure and success  )
+find - 
+audit policy changes 
+(can use - filter current log [for search log])
+logon
+(auditing allow us to record and keep track information )
+-----------------------------------------------------------------------------------
+
+
+
+
+-----
+5.3
+Hardening a Server
+
+---
+
+Server hardening is a process that protects a server's data, ports, and
+ other components from cyberattacks. It involves changing the server's
+ configuration to reduce its attack surface and make it more difficult
+ for hackers to penetrate. 
+
+---
+search 
+mrt
+open - Microsoft windows malicious software removal tool 
+next - quick scan - next 
+(note- identify infected files)
+-------
+server manager - tools - window firewall 
+or 
+search 
+window defender firewall - advance settings 
+inbound Rules - filter by profiles - filter by private pofiles
+filter by state - filter by enable - find 
+-
+remote Desktop
+(shows pentration)
+(quickly verify the necessary traffic allow perticuler type of )
+--
+Note - if you see suspicious 
+- search 
+system
+remote setting or remote desktop
+not allow remote desktop
+or 
+in server manager
+--------------------------
+in win 11 home server manager not there 
+search in Bing
+server manager windows 11  - download from below link-
+https://www.microsoft.com/en-in/download/details.aspx?id=8053&msockid=263829495fd0664f04533d925ed66777
+--------
+if win 11 pro then 
+https://www.youtube.com/watch?v=Ru53V4SS2yE
+------------
+--
+download setup- srvmgr.msi - install (let it)
 ------
+Open PowerShell as Administrator:
+Click on Start and search for PowerShell.
+Right-click on Windows PowerShell and select "Run as administrator".
+Run the command again:
+Get-WindowsCapability -Online | Where-Object {$_.Name -like "Rsat*"}
+-------
+if want install all tools - run cmd.
+ Get-WindowsCapability -Online | Where-Object {$_.Name -like "Rsat*"} | add-WindowsCapability -Online
+otherwise for - server manager
+(copy the name upcoming tools name with its version)
+ Get-WindowsCapability -Online 
+-------------------------------------------------- execution --------------------------------------------------------------------------------------
+PS C:\WINDOWS\system32> Get-WindowsCapability -Online | Where-Object {$_.Name -like "Rsat*"}
+
+
+Name  : Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.AzureStack.HCI.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.BitLocker.Recovery.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.CertificateServices.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.DHCP.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.Dns.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.FailoverCluster.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.FileServices.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.IPAM.Client.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.LLDP.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.NetworkController.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.NetworkLoadBalancing.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.RemoteAccess.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.RemoteDesktop.Services.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.ServerManager.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.StorageMigrationService.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.StorageReplica.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.SystemInsights.Management.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.VolumeActivation.Tools~~~~0.0.1.0
+State : NotPresent
+
+Name  : Rsat.WSUS.Tools~~~~0.0.1.0
+State : NotPresent
 
 
 
+PS C:\WINDOWS\system32> Get-WindowsCapability -Online -Name Rsat.ServerManager.Tools~~~~0.0.1.0
+
+
+Name         : Rsat.ServerManager.Tools~~~~0.0.1.0
+State        : NotPresent
+DisplayName  : RSAT: Server Manager
+Description  : Server Manager includes the Server Manager console and PowerShell tools for remotely managing Windows Server, and includes tools to remotely configure NIC
+               teaming on Windows Server and Best Practices Analyzer.
+DownloadSize : 89821019
+InstallSize  : 62378766
+
+PS C:\WINDOWS\system32>
+--------------------------
+
+
+
+
+-------
 
