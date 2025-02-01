@@ -1,0 +1,200 @@
+Snort - Configure a Network IDS
+
+6.2   Configure a Network IDS
+Snort 
+https://www.snort.org/downloads
+for win - setup 
+Snort_2_9_20_Installer.x64.exe
+install snort 
+then require Nmap/Npcap 
+for win setup 
+https://npcap.com/#download
+https://npcap.com/dist/npcap-1.80.exe
+install 
+------------------
+Snort Custom rule for Ping--
+==================================
+alert icmp 192.168.1.1/16 any -> any any  (msg: "Ping detect!"; sid: 2000000; )
+==================================
+copy in txt
+-------------------
+c: - snort - rules - paste there above customSnortPingrule txt file 
+-------------------
+in win cmd. - type powershell -
+(PowerShell will start  ------)
+set-location c:\snort\bin
+dir
+.\snort -w
+.\snort -W
+(note- snort cmd. case sensitive)
+Get-NetAdapter
+
+./snort -A console -i1 -c C:\Snort\rules\custompingRuleSnort.txt
+
+./snort -A console -i1 -c C:\Snort\rules\custompingRuleSnort.txt -l C:\Snort\log
+
+
+
+
+
+
+
+
+
+
+
+
+
+=============================================================================
+-------
+-----------------------------execution----------------------------------
+Microsoft Windows [Version 10.0.10240]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Users\omkan>powershell
+Windows PowerShell
+Copyright (C) 2015 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\omkan> set-location c:\snort\bin
+PS C:\snort\bin> dir
+
+
+    Directory: C:\snort\bin
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----        4/20/2022   7:45 PM          54784 npptools.dll
+-a----        4/20/2022   7:45 PM         274489 ntwdblib.dll
+-a----        4/20/2022   7:45 PM          36948 Packet.dll
+-a----        4/20/2022   7:45 PM          94208 pcre.dll
+-a----        5/24/2022  10:21 AM        1559552 snort.exe
+-a----        4/20/2022   7:45 PM          53326 WanPacket.dll
+-a----        4/20/2022   7:45 PM         208974 wpcap.dll
+-a----        4/20/2022   7:45 PM          73728 zlib1.dll
+
+
+---------------------------------------
+PS C:\snort\bin> .\snort -w
+C:\snort\bin\snort.exe: option requires an argument -- w
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.20-WIN64 GRE (Build 82)
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014-2022 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using PCRE version: 8.10 2010-06-25
+           Using ZLIB version: 1.2.11
+
+USAGE: C:\snort\bin\snort.exe [-options] <filter options>
+       C:\snort\bin\snort.exe /SERVICE /INSTALL [-options] <filter options>
+       C:\snort\bin\snort.exe /SERVICE /UNINSTALL
+       C:\snort\bin\snort.exe /SERVICE /SHOW
+Options:
+        -A         Set alert mode: fast, full, console, test or none  (alert file alerts only)
+        -b         Log packets in tcpdump format (much faster!)
+        -B <mask>  Obfuscated IP addresses in alerts and packet dumps using CIDR mask
+        -c <rules> Use Rules File <rules>
+        -C         Print out payloads with character data only (no hex)
+        -d         Dump the Application Layer
+        -e         Display the second layer header info
+        -E         Log alert messages to NT Eventlog. (Win32 only)
+        -f         Turn off fflush() calls after binary log writes
+        -F <bpf>   Read BPF filters from file <bpf>
+        -G <0xid>  Log Identifier (to uniquely id events for multiple snorts)
+        -h <hn>    Set home network = <hn>
+                   (for use with -l or -B, does NOT change $HOME_NET in IDS mode)
+        -H         Make hash tables deterministic.
+        -i <if>    Listen on interface <if>
+        -I         Add Interface name to alert output
+        -k <mode>  Checksum mode (all,noip,notcp,noudp,noicmp,none)
+        -K <mode>  Logging mode (pcap[default],ascii,none)
+        -l <ld>    Log to directory <ld>
+        -L <file>  Log to this tcpdump file
+        -n <cnt>   Exit after receiving <cnt> packets
+        -N         Turn off logging (alerts still work)
+        -O         Obfuscate the logged IP addresses
+        -p         Disable promiscuous mode sniffing
+        -P <snap>  Set explicit snaplen of packet (default: 1514)
+        -q         Quiet. Don't show banner and status report
+        -r <tf>    Read and process tcpdump file <tf>
+        -R <id>    Include 'id' in snort_intf<id>.pid file name
+        -s         Log alert messages to syslog
+        -S <n=v>   Set rules file variable n equal to value v
+        -T         Test and report on the current Snort configuration
+        -U         Use UTC for timestamps
+        -v         Be verbose
+        -V         Show version number
+        -W         Lists available interfaces. (Win32 only)
+        -X         Dump the raw packet data starting at the link layer
+        -x         Exit if Snort configuration problems occur
+        -y         Include year in timestamp in the alert and log files
+        -z <file>  Set the preproc_memstats file path and name
+        -Z <file>  Set the performonitor preprocessor file path and name
+        -?         Show this information
+<Filter Options> are standard BPF options, as seen in TCPDump
+Longname options and their corresponding single char version
+   --logid <0xid>                  Same as -G
+   --perfmon-file <file>           Same as -Z
+   --pid-path <dir>                Specify the directory for the Snort PID file
+   --snaplen <snap>                Same as -P
+   --help                          Same as -?
+   --version                       Same as -V
+   --alert-before-pass             Process alert, drop, sdrop, or reject before pass, default is pass before alert, drop,...
+   --treat-drop-as-alert           Converts drop, sdrop, and reject rules into alert rules during startup
+   --treat-drop-as-ignore          Use drop, sdrop, and reject rules to ignore session traffic when not inline.
+   --process-all-events            Process all queued events (drop, alert,...), default stops after 1st action group
+   --enable-inline-test            Enable Inline-Test Mode Operation
+   --dynamic-engine-lib <file>     Load a dynamic detection engine
+   --dynamic-engine-lib-dir <path> Load all dynamic engines from directory
+   --dynamic-detection-lib <file>  Load a dynamic rules library
+   --dynamic-detection-lib-dir <path> Load all dynamic rules libraries from directory
+   --dump-dynamic-rules <path>     Creates stub rule files of all loaded rules libraries
+   --dynamic-preprocessor-lib <file>  Load a dynamic preprocessor library
+   --dynamic-preprocessor-lib-dir <path> Load all dynamic preprocessor libraries from directory
+   --dynamic-output-lib <file>  Load a dynamic output library
+   --dynamic-output-lib-dir <path> Load all dynamic output libraries from directory
+   --pcap-single <tf>              Same as -r.
+   --pcap-file <file>              file that contains a list of pcaps to read - read mode is implied.
+   --pcap-list "<list>"            a space separated list of pcaps to read - read mode is implied.
+   --pcap-loop <count>             this option will read the pcaps specified on command line continuously.
+                                   for <count> times.  A value of 0 will read until Snort is terminated.
+   --pcap-reset                    if reading multiple pcaps, reset snort to post-configuration state before reading next pcap.
+   --pcap-show                     print a line saying what pcap is currently being read.
+   --exit-check <count>            Signal termination after <count> callbacks from DAQ_Acquire(), showing the time it
+                                   takes from signaling until DAQ_Stop() is called.
+   --conf-error-out                Same as -x
+   --enable-mpls-multicast         Allow multicast MPLS
+   --enable-mpls-overlapping-ip    Handle overlapping IPs within MPLS clouds
+   --max-mpls-labelchain-len       Specify the max MPLS label chain
+   --mpls-payload-type             Specify the protocol (ipv4, ipv6, ethernet) that is encapsulated by MPLS
+   --require-rule-sid              Require that all snort rules have SID specified.
+   --daq <type>                    Select packet acquisition module (default is pcap).
+   --daq-mode <mode>               Select the DAQ operating mode.
+   --daq-var <name=value>          Specify extra DAQ configuration variable.
+   --daq-dir <dir>                 Tell snort where to find desired DAQ.
+   --daq-list[=<dir>]              List packet acquisition modules available in dir.  Default is static modules only.
+   --dirty-pig                     Don't flush packets and release memory on shutdown.
+   --cs-dir <dir>                  Directory to use for control socket.
+   --ha-peer                       Activate live high-availability state sharing with peer.
+   --ha-out <file>                 Write high-availability events to this file.
+   --ha-in <file>                  Read high-availability events from this file on startup (warm-start).
+   --suppress-config-log           Suppress configuration information output.
+PS C:\snort\bin>
+
+PS C:\snort\bin> .\snort -W
+>>>
+
+   ,,_     -*> Snort! <*-
+  o"  )~   Version 2.9.20-WIN64 GRE (Build 82)
+   ''''    By Martin Roesch & The Snort Team: http://www.snort.org/contact#team
+           Copyright (C) 2014-2022 Cisco and/or its affiliates. All rights reserved.
+           Copyright (C) 1998-2013 Sourcefire, Inc., et al.
+           Using PCRE version: 8.10 2010-06-25
+           Using ZLIB version: 1.2.11
+
+Index   Physical Address        IP Address      Device Name     Description
+-----   ----------------        ----------      -----------     -----------
+    1   00:0C:29:A2:7C:F0       192.168.176.184 \Device\NPF_{9A3B082E-3CC0-4B68-8E8E-5457DD7AF8A7}  Intel(R) 82574L Gigabit Network Connection
+    2   00:00:00:00:00:00       0000:0000:0000:0000:0000:0000:0000:0000 \Device\NPF_Loopback        Adapter for loopback traffic capture
+PS C:\snort\bin>
