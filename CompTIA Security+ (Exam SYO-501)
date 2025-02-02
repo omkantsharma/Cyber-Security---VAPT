@@ -314,14 +314,14 @@ next - quick scan - next
 -------
 server manager - tools - window firewall 
 or 
-search 
+search - firewall 
 window defender firewall - advance settings 
-inbound Rules - filter by profiles - filter by private pofiles
-filter by state - filter by enable - find 
+inbound Rules - filter by profiles - filter by private profiles or show all
+filter by state - filter by enable - find like remote Desktop or show all
 -
 remote Desktop
-(shows pentration)
-(quickly verify the necessary traffic allow perticuler type of )
+(shows penetration)
+(quickly verify the necessary traffic allow particular type of )
 --
 Note - if you see suspicious 
 - search 
@@ -434,10 +434,262 @@ DownloadSize : 89821019
 InstallSize  : 62378766
 
 PS C:\WINDOWS\system32>
---------------------------
+------------------------------------
+
+Lesson Summary
+Hardening is the security technique of altering a system's configuration to close vulnerabilities and protect the system against attack.
+Hardening techniques involve the implementation of a principle of least functionality and disabling unnecessary network ports.
+A security baseline is a collection of host security settings. Each baseline will differ based on the computer's function and operating system.
+Virtualization is creating a simulation of a computing environment. The VIrtual machine is a virtualized computer.
+A hypervisor is a layer of software that separates the virtual software from the physical hardware it runs on.
+Mobile device connection methods are Cellular, Wi-Fi, Bluetooth and NFC.
+
+
+===========================================================
+6
+
+Implement Network Security--
+-----------------------------------------
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss implementing network security.
+List the network components.
+Explain what is a router and what is an access control list.
+Define the network access control.
+Outline the characteristics of virtual local area networks.
+Describe different internet protocol suits.
+Distinguish different wireless antenna types.
+-------------------------------------------------------------------------------------------------
+
+Snort - Configure a Network IDS
+
+6.2   Configure a Network IDS
+Snort 
+https://www.snort.org/downloads
+for win - setup 
+Snort_2_9_20_Installer.x64.exe
+install snort 
+then require Nmap/Npcap 
+for win setup 
+https://npcap.com/#download
+https://npcap.com/dist/npcap-1.80.exe
+install 
+------------------
+Snort Custom rule for Ping--
+==================================
+alert icmp 192.168.1.1/16 any -> any any  (msg: "Ping detect!"; sid: 2000000; )
+==================================
+copy in txt
+-------------------
+c: - snort - rules - paste there above customSnortPingrule txt file 
+-------------------
+in win cmd. - type powershell -
+(PowerShell will start  ------)
+set-location c:\snort\bin
+dir
+.\snort -w
+.\snort -W
+(note- snort cmd. case sensitive)
+Get-NetAdapter
+
+./snort -A console -i1 -c C:\Snort\rules\custompingRuleSnort.txt
+
+./snort -A console -i1 -c C:\Snort\rules\custompingRuleSnort.txt -l C:\Snort\log
+
+
+--------------------------------------------------------------------------------
+6.3  Secure Network Design Elements 
+NAC
+DMZ
+Network Isolation
+Virtual Local Area Networks 
+Network Security Device Management
+- Aggregation switches
+-Firewalls
+-Proxies and Filters
+-Load balancers
+-Taps and sensors/monitors
+-collectors and correlation engines
+-VPN concentrators
+-----------
+Network Address Translation
+---
+Software - Define Networking
+---------------------------------------
+6.4 securing network design network
+
+------
+6.5 Implement secure Networking Protocols and Services
+OSI Model
+- understanding layer make easier to detect threats and targets
+-help to secure network by layers
+- if layer 1 fails, then rest will likely fail
+- if an attack succeeds at layer 7, the bottom layers will be unable to stop it 
+--
+ipv4
+ipv6
+DHCP 
+DNS    - Provide global name resolution
+HTTP - response code & methods
+SSL/TLS - security protocols combining digital certificate for authentication with public key encryption.. (work with browsers)
+SSL/TLS accelerator - Hardware device that can offload encryption calculation from a server. (plugged into any server)
+
+SSH - secure remote access and secure transfer of data.
+
+SNMP - A service used to collect information from network devices to diagnostic and maintenance purposes. 
+
+RTTP - Provides audio and video streaming media over a TCP/IP network
+
+ICMP - report on connection between two hosts.
+
+INTERNET PROTOCOL SECURITY
+IPsec
+(layer 3 network layer)
+authentication header
+encapsulating security payload
+
+FILE TRANSFER PROTOCOLS-
+FTP
+SFTP
+TFTP
+FTP over SSH/ Secure FTP
+SCP
+FTPS/FTP SSL
+
+
+EMAIL PROTOCOLS
+POP
+IMAP
+MIME
+Secure/MIME
+
+ADDITIONAL NETWORK PROTOCOLS AND SERVICES
+Telephony
+Routing & Switching
+Time Synchronization
+Subscription
+-----
+port - the endpoint of a logical network connection. 
+port and port ranges
+IANA separates these numbers into three blocks
+-well know 0-1023
+-Registered 1024-49151
+-Dynamic 49152-65535
+-----
+
+
+------------------------------------------------------
+6.6 Installing an internet information services web server..
+- in win
+in search
+services
+Window Remote Management service
+Double click--
+Display name - (WS-management)
+
+
+---
+in power shell
+Get-Service
+Get-Service WS-management
+Get-Service *remote*
+Get-Service *manage*
+Get-Service winrm
+(rm -remote management)
+
+------------
+internet information services (IIS) Manager
+
+---------------------------------------------------------------
+6.7 Securing Network Traffic using IPsec
+--------
+search run - start run
+mmc
+File - add/Remove Snap-in...  Ctrl+M
+IP Security Policy Management
+IP Security Monitor
+add - snap ins -ok
+IP Security Policy on local computer
+right click - create IP Security Policy...
+(- create - give name - delete)
+---------------------------------------------
+Firewall - Advance Firewall - 
+connection security rules
+right click- New Rules
+Rule types - Server to Server (option select) -
+(for vpn tunnel is there)
+these IP - add 
+or
+any ip addr. in endpoint 1,2 
+Next
+(Request authentication should require ip sec)
+request now - authentication method 
+- advance (select) - customize - first authentication method 
+add - Computer (NTLMv2)
+(there Kerberos or Pre shared key)
+ - ok - next- only check box on domain - next
+-in Name type- test - finish
+(now connection security rule show up)
+(go property- {specify particular port -TCP} )
+property - protocols and ports - protocol type - TCP
+(specify dns port) 
+ENDPOINT 1 PORT - Specific ports 
+(blow box write 53 DNS Traffic)
+53
+(only this one affected this security rule )
+------
+then go to advance firewall inbound rules
+- find DNS rules
+Mdns - property - allow - customized -  ok
+(like a such way firewall integrated in IPsec.)
+--
+click - Windows firewall with Advance
+- window defender firewall property 
+- IPsec Setting - customize require changes
+( if  )
+monitoring - security association - main mode
+(configure & monitor IPsec)
+
+
+
+
+---------------------------------------
+6.8 Secure Wireless Traffic 
+
+
+
+
+-------------------------------------
+6.9 Demo - practical - Secure Wireless Traffic 
+
+---
+Lesson Summary
+Implementing network security includes configuring network security technologies, securing network design elements, implementing secure networking protocols and services, and securing wireless traffic.
+Network components are device, media, network adapter, network operating system, and protocol.
+A router is a device that connects multiple networks that use the same protocol. Access control list is a list of rules for blocking or allowing traffic.
+Network access control refers to the collected protocols, policies, and hardware that govern access on device interconnections.
+Virtual local area networks are a logical method of segmenting a network at the data link layer.
+Internet protocol suite (TCP/IP) is the native protocol suite of the internet, of which TCP and IP were the original protocols.
+Wireless networks do not rely entirely on physical cabling. The data is transmitted through invisible radio waves.
+
+-----------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------
+
+7. Managing Identity and Access
+-----------------------------------------------
+Learning Outcomes
+Having completed this module you will be able to:
+Define identity and access management.
+List and describe common directory services.
+Explain various remote access methods.
+Compare various remote access protocols.
+Underline the benefits of password authentication protocol.
+Discuss account management.
+-------
 
 
 
 
 -------
+
 
