@@ -687,9 +687,160 @@ Underline the benefits of password authentication protocol.
 Discuss account management.
 -------
 
-
+Lesson Summary
+Managing identity and access includes implementing identity and access management, configuring directory services, configuring access services, and managing accounts.
+Identity and access management is a security process that provides identity, authentication, and authorization mechanisms for entities to work with organizational assets.
+Directory service is a network service that stores identity information about all objects in a particular network.
+Active Directory is a directory service for Microsoft. Other services include Oracle Directory Server Enterprise Edition, OpenDJ, OpenLDAP and Open Directory.
+PPP protocol is commonly used for dial-up internet access. Other protocols are PPTP, L2TP and SSTP.
+Password authentication protocol sends user IDs and passwords as plaintext.
+Account management processes, functions, and policies used to effectively manage user account in an organization.
 
 
 -------
+8 implement Cryprography
 
+
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss implementing cryptography.
+Identify cryptography concepts.
+List the different data states.
+Explain the digital signatures.
+Summarize the cyphers in cryptography algorithms.
+Outline the importance of each PKI component.
+Compare different types of certificates.
+Summarize the certificate enrollment process.
+
+---------
+Simple Salter.exe is a program that calculates the hashes of two password inputs and determines if they match. It also adds a random salt value to the input. 
+-----------
+simple hasher 2
+-----------
+digital signature
+-----------
+Lesson Summary
+Cryptography is the science of encrypting and decrypting data. Confusion is one of the elements, and it prevents attackers from looking for patterns between ciphertext and plaintext.
+Data states are "at rest" (stored in various media), "in transit" (data that moves from medium to medium) and "in use" (data that is currently being created, deleted, read or modified).
+A digital signature is a message digest that has been encrypted again with a user's private key.
+There are two types of ciphers, stream cipher (encrypts data one bit at a time) and block cipher (encrypts data in blocks).
+Self-signed is a type of certificate that does not recognise higher authority in the chain. It is owned by the same entity that signs it and it requires the client to trust the entity directly. Other types of certificates are root user, computer, email, code signing, SAN, wildcard, DV and EV.
+Private keys have to be protected because they are crucial to the security of the hierarchy. They need to be deleted from insecure media, backed up to removable media, and never shared.
+=====================================================
+8 Implementing Cryptography
+----------
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss implementing operational security.
+Explain security frameworks and provide examples.
+Summarize the authorities that mandate compliance.
+Outline the importance of layered security.
+List the different types of security policies.
+Compare various deployment environments.
+Recognize the importance of physical security controls.
+
+8.1 Evaluate Security Frameworks and Guidelines --
+----------
+8.8 to recover delete file from recycle bin 
+software named- Recuva.com 
+------
+in cmd. 
+format /? 
+format s: /fs:NTFS /P:1
+(AFTER THIS CAN NOT ABLE TO RECOVER)
+----
+8.9 ENCRYPT A STORAGE Devices
+soft -
+dcrypt
+Deskcryptor setup
+---
+control panel - security, bit encryption - turn on - 
+TPM Administration
+------------------Lesson Summary
+The security framework is a conceptual structure for security operations in the organization. It defines how to categorize and identify elements of security operations.
+Compliance is the practice of ensuring that legal, regulatory, and organizational requirements are met. Authorities that mandate compliance are government legislative entities that make laws, government regulatory agencies that provide standards for various industries, and industry associations that have their own standards.
+Layered security is an approach to operational security that incorporates many different avenues of defence.
+Security policy is a formalized statement that defines how security will be implemented in an organization. There are different types of policies and it is important to know what each one of these does.
+Security automation can increase the efficiency of security operations. It handles tasks that are otherwise tedious and time-consuming.
+Physical security controls are meant to restrict, detect and monitor access to physical areas or assets.
+============================================================
+
+9 Addressing Security Issues
+
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss implementing operational security.
+Explain security frameworks and provide examples.
+Summarize the authorities that mandate compliance.
+Outline the importance of layered security.
+List the different types of security policies.
+Compare various deployment environments.
+Recognize the importance of physical security controls.
+
+------
+
+Lesson Summary
+Access control issues are going to be generally categorized as either people not having enough access or having too much access. 
+There are authentications and permission issues, as well as access violations.
+Encryption issues can have a negative impact on the confidentiality, integrity and authenticity of data.
+Data exfiltration is a process by which an attacker takes data stored inside a private network, and moves it to an external network.
+Incident response is the practice of using an organized methodology to address and manage security breaches and attacks while limiting damage and reducing recovery costs.
+Computer forensics is the practice of collecting and analyzing data from computing devices and potentially presenting the information as a form of evidence in a court of law.
+
+------
+
+============================================================
+
+10 Addressing Security Issue
+----------------------------------------
+
+Learning Outcomes
+Having completed this module you will be able to:
+List the access control and encryption issues.
+Discuss troubleshooting tactics for access control and encryption issues.
+Explain the process called data exfiltration.
+Describe how to respond to different security configuration issues.
+Outline the importance of incident response.
+Summarize and explain the basic forensic process.
+
+
+----------------
+Lesson Summary
+The security framework is a conceptual structure for security operations in the organization. It defines how to categorize and identify elements of security operations.
+Compliance is the practice of ensuring that legal, regulatory, and organizational requirements are met. Authorities that mandate compliance are government legislative entities that make laws, government regulatory agencies that provide standards for various industries, and industry associations that have their own standards.
+Layered security is an approach to operational security that incorporates many different avenues of defence.
+Security policy is a formalized statement that defines how security will be implemented in an organization. There are different types of policies and it is important to know what each one of these does.
+Security automation can increase the efficiency of security operations. It handles tasks that are otherwise tedious and time-consuming.
+Physical security controls are meant to restrict, detect and monitor access to physical areas or assets.
+
+===================================================================
+
+
+11 Ensuring Business Continue 
+--------------------------------------------- 
+
+----------------------------
+Learning Outcomes
+Having completed this module you will be able to:
+Discuss business continuity plan and disaster recovery.
+List the steps in the disaster recovery process.
+Explain what the recovery team is and who can be included in it.
+Define the process called "order of restoration".
+Distinguish between different exercise types in plan testing.
+Summarize the guidelines for developing a business continuity plan.
+
+
+
+--------------------------------
+
+Lesson Summary
+Business continuity is a collection of processes enabling an organization to maintain normal business operations after an adverse event.
+Disaster recovery is a major component of business continuity that focuses on recovering assets after a disaster.
+A recovery team is a group of designated individuals who implement recovery solutions.
+Order of restoration is a process dictating what types of systems to prioritize during disaster recovery.
+A business continuity plan is a policy that describes and ratifies the organization's overall business continuity strategy.
+Testing should be a built-in part of the implementation so that we can evaluate the effectiveness of the plans and identify necessary changes to those procedures.
+After-action reports is an analysis of events that can provide insight into improving response processes in the future.
+
+-------------------------------
 
