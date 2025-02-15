@@ -1,0 +1,115 @@
+IP spoofing - scapy hping3
+
+ sudo apt install scapy hping3   
+sudo scapy
+----------------------------------------------------------------------------------------------
+----copy below whole command and paste in scapy running tool-------
+--------
+ from scapy.all import *
+packet = IP(src="192.168.1.100", dst="192.168.176.143") / ICMP()
+send(packet)
+--------
+----------------------------------------------------------------------------------------------
+-------open new terminal ------------
+sudo su  
+hping3 -I eth0 -a 192.168.1.100 -c 4 -S 192.168.176.143 -p 80
+-------------------------
+as same open wireshark and see packets there ........
+
+
+
+----------------===================================================
+============================================================
+============================================================
+============================================================
+============================================================
+============================================================
+┌──(kali㉿kali)-[~]
+└─$ sudo apt install scapy hping3                            
+[sudo] password for kali: 
+Note, selecting 'python3-scapy' instead of 'scapy'
+python3-scapy is already the newest version (2.6.1+dfsg-1).
+hping3 is already the newest version (3.a2.ds2-11~kali1).
+The following packages were automatically installed and are no longer required:
+  fonts-liberation2         libmfx1
+  hydra-gtk                 libpaper1
+  ibverbs-providers         libperl5.38t64
+  libassuan0                libplacebo338
+  libavfilter9              libplist3
+  libbfio1                  libpostproc57
+  libboost-iostreams1.83.0  libpython3.11-dev
+  libcephfs2                librados2
+  libegl-dev                librdmacm1t64
+  libfmt9                   libusbmuxd6
+  libgail-common            libzip4t64
+  libgail18t64              openjdk-17-jre
+  libgeos3.12.2             openjdk-17-jre-headless
+  libgfapi0                 openjdk-23-jre
+  libgfrpc0                 openjdk-23-jre-headless
+  libgfxdr0                 perl-modules-5.38
+  libgl1-mesa-dev           python3-appdirs
+  libgles-dev               python3-hatch-vcs
+  libgles1                  python3-hatchling
+  libglusterfs0             python3-lib2to3
+  libglvnd-core-dev         python3-pathspec
+  libglvnd-dev              python3-pluggy
+  libgspell-1-2             python3-setuptools-scm
+  libgtk2.0-0t64            python3-trove-classifiers
+  libgtk2.0-bin             python3.11
+  libgtk2.0-common          python3.11-dev
+  libibverbs1               python3.11-minimal
+  libimobiledevice6         rwho
+  libiniparser1             rwhod
+  libjim0.82t64             samba-vfs-modules
+  libjsoncpp25              xcape
+  libmbedcrypto7t64
+Use 'sudo apt autoremove' to remove them.
+
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 154
+  =-----------------------------------------------------                                                                  
+┌──(kali㉿kali)-[~]
+└─$ sudo scapy
+INFO: Can't import PyX. Won't be able to use psdump() or pdfdump().
+      .SYPACCCSASYY  
+P /SCS/CCS        ACS | Welcome to Scapy
+       /A          AC | Version 2.6.1
+     A/PS       /SPPS |
+        YP        (SC | https://github.com/secdev/scapy
+       SPS/A.      SC |
+   Y/PACC          PP | Have fun!
+    PY*AYC        CAA
+         YYCY//SCYP   using IPython 8.30.0
+>>> from scapy.all import *
+...: 
+-------------------------------------------------------------
+>>> from scapy.all import *
+...: packet = IP(src="192.168.1.100", dst="192.168.176.143") / ICMP(
+...: )
+...: send(packet)
+...: 
+.
+Sent 1 packets.
+>>> 
+------------------------------------------------------------------------------------------------
+----------------------new terminal--------------------------------------------
+                                                                    
+┌──(kali㉿kali)-[~]
+└─$ sudo su                                                        
+┌──(root㉿kali)-[/home/kali]
+└─# hping3 -I eth0 -a 192.168.1.100 -c 4 -S 192.168.176.143 -p 80
+
+HPING 192.168.176.143 (eth0 192.168.176.143): S set, 40 headers + 0 data bytes
+len=46 ip=192.168.176.143 ttl=64 DF id=0 sport=80 flags=SA seq=0 win=5840 rtt=14.6 ms
+len=46 ip=192.168.176.143 ttl=64 DF id=0 sport=80 flags=SA seq=1 win=5840 rtt=2.5 ms
+len=46 ip=192.168.176.143 ttl=64 DF id=0 sport=80 flags=SA seq=2 win=5840 rtt=5.1 ms
+len=46 ip=192.168.176.143 ttl=64 DF id=0 sport=80 flags=SA seq=3 win=5840 rtt=4.8 ms
+
+--- 192.168.176.143 hping statistic ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 2.5/6.8/14.6 ms
+                                                                    
+┌──(root㉿kali)-[/home/kali]
+└─# 
+--------------------------------------------------------------------------------------------
+
