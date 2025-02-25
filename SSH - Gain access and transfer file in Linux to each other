@@ -1,0 +1,126 @@
+Gain access and transfer file in Linux to each other 
+--
+sudo systemctl start ssh
+sudo systemctl status ssh
+----
+
+GAIN ACCESS
+-----------------------------------------------------
+┌──(kali㉿kali)-[~]
+└─$ systemctl start ssh       
+                                                                                         
+┌──(kali㉿kali)-[~]
+└─$ ssh kali@192.168.176.189
+kali@192.168.176.189's password: 
+Linux kali 6.8.11-amd64 #1 SMP PREEMPT_DYNAMIC Kali 6.8.11-1kali2 (2024-05-30) x86_64
+
+The programs included with the Kali GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Kali GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Feb 25 05:25:07 2025 from 192.168.176.164
+┌──(kali㉿kali)-[~]
+└─$ hostname -I
+192.168.176.189 
+                                                                                         
+┌──(kali㉿kali)-[~]
+└─$ exit
+Connection to 192.168.176.189 closed.
+                                                                                         
+┌──(kali㉿kali)-[~]
+└─$ hostname -I
+192.168.176.164 
+                                                                                         
+┌──(kali㉿kali)-[~]
+└─$ 
+----------------------------------------------------------------------
+Transfer file in Linux to each other
+
+OS 1
+
+┌──(kali㉿kali)-[~/Desktop]
+└─$ systemctl start ssh
+                                                       
+┌──(kali㉿kali)-[~/Desktop]
+└─$ echo target > target.txt
+                                                       
+┌──(kali㉿kali)-[~/Desktop]
+└─$ hostname -I
+192.168.176.189 
+                                                       
+┌──(kali㉿kali)-[~/Desktop]
+└─$ scp target.txt kali@192.168.176.164:/home/kali/Desktop
+
+kali@192.168.176.164's password: 
+target.txt           100%    7     5.1KB/s   00:00    
+====================================
+OS 2
+   cd Desktop 
+   cd Desktop
+   echo attacker > attacker.txt
+   hostname -I
+   scp attacker.txt kali@192.168.176.189:/home/kali/Desktop
+-----------------------------------------------
+====================================================================
+====================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================================================================
+SSH Between Two Virtual Machines (secure shell and secure copy )
+virtual machine 1     
+steps
+1 
+ip --brief addr show
+or
+ip a
+- install nmap 
+sudo apt install nmap
+sudo nmap -sn 192.168.43.0/24
+https://www.cloudaccess.net/cloud-control-panel-ccp/157-dns-management/322-subnet-masks-reference-table.html
+sudo apt install ssh
+( ssh 2nd system name@ 2nd system ip )
+eg.   ssh om@192.168.35.244
+if refuse - https://runcloud.io/blog/fix-ssh-connection-refused
+in root use -
+systemctl status ssh
+(systemctl - systemcontrol)
+sudo service ssh start
+sudo systemctl restart ssh.service
+which ssh
+
+exit
+----------
+cd /tmp 
+ls -l om
+
+==========================
+==========================
+virtual machine 2 
+steps
+1
+ip --brief addr show
+-----------------------
+scp -r  /home/om2 192.168.32.169:/tem
+(scp -r ( copy the folder ) /home/system1_name  system1_ip:/dir_name)
+
+
+
+
+
+https://www.youtube.com/watch?v=hkA3nZQJr_E
