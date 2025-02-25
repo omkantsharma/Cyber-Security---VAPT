@@ -24,6 +24,8 @@ zsh: suspended  less history.log
 ┌──(kali㉿kali)-[/var/log/apt]
 └─$ more history.log
 ------------------------------------------------------
+
+------------------------------------------------------
 write a cmd in the terminal 
 ls -l /               [file system]
 
@@ -308,7 +310,36 @@ mkdir share  [make folder]
 cd share     [enter in folder]
 ls            [list of file/folder]
 pwd   [ present working dir  {home/kali}]
---------------------------
+-----------------------------------------------------------
+-----------------------------------------------------------
+CMD for Find system information in Linux
+--
+hostid
+-------------------
+uname
+or
+uname  -a
+- n, -v, -r, -m
+-------------------
+lscpu 
+-------------------
+lsusb 
+or 
+lsusb -v
+-------------------
+(summary of your hardware information)
+sudo lshw
+sudo lshw -short
+
+-------------------
+sudo su
+or 
+cd /
+dmidecode
+------------------
+lspci 
+-----------------------------------------------------------
+-----------------------------------------------------------
 uname         [system name]
 uname -r      [os version]
 uname -a      [all details about system]
