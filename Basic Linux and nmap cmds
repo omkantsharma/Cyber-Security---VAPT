@@ -361,6 +361,9 @@ passwd root   [ same for root]
 sudo su 
 su useradd  omk  [create new user - omk ]
 passwd omk       [provide password]
+or 
+adduser om
+(new passwd) 
 
 ls /home/        [ for user details]
 
