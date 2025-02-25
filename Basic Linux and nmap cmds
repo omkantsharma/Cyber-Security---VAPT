@@ -678,6 +678,8 @@ nmap -O <target ip>
 nmap -A <target>
 [Aggressive Scan:]
 
+nmap --script vuln <target ip>
+or
 nmap -p 53 --script dns-enum <target>
 [DNS Enumeration]
 
