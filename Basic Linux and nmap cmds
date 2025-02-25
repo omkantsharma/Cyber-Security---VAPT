@@ -373,7 +373,27 @@ id omk
 sudo su or sudo -i         
 userdel omk
 
+----------------------------------------
+- create new group omk
+groupadd omk
+- inside group add user om
+usermod -aG omk om
+- list groups
+cat /etc/group
+-group information
+getent group
+- view specific group information-
+grep omk /etc/group
+- edit group - add a user to a group 
+sudo usermod -aG <groupname> <username>
+- remove a user form a group
+sudo gpasswd -d <username> <groupname>
+-- e.g. - add user name om to omk group 
+sudo usermod -aG omk om
+-- open group file 
+sudo nano /etc/group
 
+------------------------------------------
 
 
 -----------------
