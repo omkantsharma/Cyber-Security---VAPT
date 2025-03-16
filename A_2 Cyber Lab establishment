@@ -1,6 +1,9 @@
 A. Cyber Lab establishment
 ------------------------------------------------------- 
 vmplayer -- Virtual Environment in host Operating system for Lab.
+vmpro --
+https://softwareupdate.vmware.com/cds/vmw-desktop/ws/
+
 vmkali -- compressed preinstalled kali zip file for vmplayer 
 kaliiso -- kali is attacker machine or Linux based operating system 
 Metasploitable2 - for practice you can use it as victim or target machine or OS. 
@@ -8,6 +11,8 @@ Tails OS - use to become anonymous or can run Dark web
 -------------------------------------------------------------------
 ===================================================================
 vmplayer vmkali kaliiso Metasploitable2  download links-
+vmpro --
+https://softwareupdate.vmware.com/cds/vmw-desktop/ws/
 
 vmplayer - https://www.techspot.com/downloads/1969-vmware-player.html
 for win-
