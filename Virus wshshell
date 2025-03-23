@@ -38,7 +38,20 @@ win + r - shell startup - if it is there
 
 
 
+=================================================
+IN NOTPAD --------
+-----------------
+shutdown /s /f /t 0 
 
+ctrl+s  
+
+with .exe    extention
+
+WIN+R
+SHELL:STARTUP
+FILE PASTE HERE
+
+-------------------------------
 
 
 
