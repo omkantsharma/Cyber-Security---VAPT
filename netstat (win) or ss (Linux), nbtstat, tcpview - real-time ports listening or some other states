@@ -1,0 +1,60 @@
+netstat (win) or ss (Linux), nbtstat, tcpview - real-time ports listening or some other states  
+
+
+The utility that tells you in real-time which ports are in a listening or some other state is netstat or ss, depending on your operating system:
+
+Windows:
+
+netstat -an → Displays all active connections and listening ports.
+
+netstat -ano → Includes the Process ID (PID) for each connection.
+
+netstat -ab → Shows the executable associated with each listening port.
+
+Linux/macOS:
+
+ss -tulnp → Shows listening ports along with process names.
+
+netstat -tulnp (older but still useful) → Displays TCP/UDP ports in use.
+
+For real-time monitoring, you can also use lsof -i (Linux/macOS) or Wireshark for detailed packet analysis.
+-----------------------------------------------------------------------------------------------
+
+nbtstat Overview
+nbtstat is primarily used to display NetBIOS name tables, resolve NetBIOS names, and check NetBIOS connections. It's not used for monitoring open ports in real time like netstat or ss.
+
+Common nbtstat Commands:
+nbtstat -n → Displays local NetBIOS names registered on the system.
+
+nbtstat -c → Shows the NetBIOS name cache.
+
+nbtstat -a <hostname> → Displays NetBIOS names of a remote machine.
+
+nbtstat -A <IP address> → Similar to -a, but queries using an IP address.
+-----------------------------------------------------------------------------------------
+TCPView is a Windows utility that provides a real-time view of all TCP and UDP connections on your system, including listening ports, established connections, and remote addresses.
+
+Key Features of TCPView:
+Shows active and listening network connections.
+
+Displays process names associated with each connection.
+
+Updates in real-time (unlike netstat, which gives a snapshot).
+
+Allows users to terminate connections or close processes directly.
+
+How to Use TCPView:
+Download TCPView from Microsoft Sysinternals.
+
+Run Tcpview.exe (No installation required).
+
+You’ll see a list of all active network connections, including:
+
+Local and remote addresses
+
+Port numbers
+
+Connection states (LISTENING, ESTABLISHED, etc.)
+
+Associated process names
+-------------------------------------------------------------------------------------------
