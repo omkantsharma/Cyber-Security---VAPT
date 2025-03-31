@@ -1,0 +1,6 @@
+In cybersecurity, IOA (Indicator of Attack) refers to 
+evidence suggesting a potential cyberattack is in progress 
+or imminent, 
+----
+while IOC (Indicator of Compromise) signifies evidence 
+that a system has already been compromised. 
