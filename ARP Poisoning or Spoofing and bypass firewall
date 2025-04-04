@@ -1,4 +1,8 @@
-ARP Poisoning or Spoofing
+ARP Poisoning or Spoofing 
+-------------
+and   bypass firewall {only - arp-scan or nmap -sn (on a local subnet) 
+can perform this type of scan effectively.}
+
 ---------------
 
 Target OS -Win
