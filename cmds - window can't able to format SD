@@ -1,0 +1,56 @@
+Start → cmd  → Run as Administrator 
+
+diskpart
+list disk
+select disk X   (जहां X आपकी SD card की नंबर है)
+clean
+create partition primary
+format fs=fat32 quick
+assign
+exit
+
+==================================================
+Microsoft Windows [Version ------- ]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>diskpart
+
+Microsoft DiskPart version --------
+
+Copyright (C) Microsoft Corporation.
+On computer: ETHICAL
+
+DISKPART> list disk
+
+  Disk ###  Status         Size     Free     Dyn  Gpt
+  --------  -------------  -------  -------  ---  ---
+  Disk 0    Online          476 GB  1024 KB        *
+  Disk 1    Online           29 GB      0 B
+
+DISKPART> select disk 1
+
+Disk 1 is now the selected disk.
+
+DISKPART> clean
+
+DiskPart succeeded in cleaning the disk.
+
+DISKPART> create partition primary
+
+DiskPart succeeded in creating the specified partition.
+
+DISKPART> format fs=fat32 quick
+
+  100 percent completed
+
+DiskPart successfully formatted the volume.
+
+DISKPART> assign
+
+DiskPart successfully assigned the drive letter or mount point.
+
+DISKPART> exit
+
+Leaving DiskPart...
+
+C:\Windows\System32>
