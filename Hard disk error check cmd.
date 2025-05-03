@@ -1,0 +1,13 @@
+command prompt, type CHKDSK *: /f (* represents the drive letter of the specific drive that 
+you want to scan and repair) and press Enter. This CHKDSK command will scan 
+your computer’s drives for errors and attempt to fix any errors it finds.
+
+Here I take CHKDSK e: /f as an example. The image below shows that the partition has no 
+file system errors. If any hard drive error is detected, CHKDSK will help you fix it automatically.
+
+-----------------------------------Execution ----------------------------------------------------------------
+Microsoft Windows [Version 10.0.26100.3915]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\omkan>CHKDSK E: /f
+The type of the file system is NTFS.
