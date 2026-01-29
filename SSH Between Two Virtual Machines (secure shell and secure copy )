@@ -1,0 +1,23 @@
+SSH Between Two Virtual Machines 
+(secure shell and secure copy )
+
+virtual machine 1     
+steps
+1 
+ip --brief addr show
+( ssh 2nd system name@ 2nd system ip )
+eg.   ssh om@192.168.35.244
+exit
+----------
+cd /tmp 
+ls -l om
+
+==========================
+==========================
+virtual machine 2 
+steps
+1
+ip --brief addr show
+-----------------------
+scp -r  /home/om2 192.168.32.169:/tem
+(scp -r ( copy the folder ) /home/system1_name  system1_ip:/dir_name)
